@@ -30,3 +30,14 @@ class srt_file:
                 print("save ok")
             except:
                 print("save failed")
+
+    # Remove hearing impaired lines and text
+    def remove_hearing_impaired(self):
+        if self.contents:
+            for line in self.contents:
+                for key, rgx in self.regex.items():
+                    match = re.search(rgx, line)
+                    if match:
+                        line = line.replace(match[0], "").strip()
+                        print(f"removed: {match[0]}")
+                self.modified_contents.append(line)
