@@ -28,7 +28,7 @@ class srt_file:
     def save(self):
         if self.modified_contents:
             try:
-                with open('test.srt', 'w') as f: # TODO: change file name dest.
+                with open(self.full_path, 'w') as f:
                     for line in self.modified_contents:
                         f.write(f"{line}\n")
                 print("save ok")
