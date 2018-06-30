@@ -6,10 +6,14 @@ class srt_file:
         self.contents = None
         self.modified_contents = []
         self.regex = {
-            "hi_speaker_annotation"     : re.compile(r"^[A-Z]+\:\s"),
-            "hi_parentheses_one_line"   : re.compile(r"^\([A-Z\s\-]+\)"),
-            "hi_parentheses_start_line" : re.compile(r"^\([A-Z\s\-]+"),
-            "hi_parentheses_end_line"   : re.compile(r"^[A-Z\s\-]+\)") }
+            "hi_speaker_annotation"     : re.compile(r"^[A-Za-z\s\-]+\:"),
+            "hi_parentheses_one_line"   : re.compile(r"^\([A-Za-z\s\-]+\)"),
+            "hi_hooks_one_line"         : re.compile(r"^\[[A-Za-z\s\-]+\]"),
+            "hi_parentheses_start_line" : re.compile(r"^\([A-Za-z\s\-]+"),
+            "hi_parentheses_end_line"   : re.compile(r"^[A-Za-z\s\-]+\)"),
+            "hi_hooks_start_line"       : re.compile(r"^\[[A-Za-z\s\-]+"),
+            "hi_hooks_end_line"         : re.compile(r"^[A-Za-z\s\-]+\]")
+        }
         self.lines = {}
         self._load_file()
 
